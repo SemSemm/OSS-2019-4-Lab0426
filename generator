@@ -11,15 +11,18 @@ while ((1))
 do
 	if [[ $start != $SECONDS ]]
 	then
-		echo "$SECONDS"
-		echo >> log.txt "$SECONDS"
-		start=$SECONDS
-		
-		RAND=$RANDOM
-		if [[ $((RAND%3)) -eq 0 ]]
+		if (( $SECONDS % 2 == 0 ))
 		then
-			echo $SPOILER
-			echo >> log.txt "$SPOILER"
+			echo "$SECONDS"
+			echo >> log.txt "$SECONDS"
+			start=$SECONDS
+		
+			RAND=$RANDOM
+			if [[ $((RAND%3)) -eq 0 ]]
+			then
+				echo $SPOILER
+				echo >> log.txt "$SPOILER"
+			fi
 		fi
 	fi
 done
